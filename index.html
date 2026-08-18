@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NILUĖ | Luxury Sleepwear</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            background-color: #0a0a0a; 
+            color: #f8f8f8; 
+            font-family: 'Montserrat', sans-serif; 
+            padding: 0; 
+            padding-bottom: 90px;
+            -webkit-font-smoothing: antialiased;
+        }
+        .container { max-width: 480px; margin: 0 auto; padding: 0 16px; }
+        
+        .vip-banner { 
+            display: none; 
+            background-color: #161616; 
+            color: #d4af37; 
+            border-bottom: 1px solid #222222;
+            text-align: center; 
+            padding: 12px; 
+            font-size: 0.75rem; 
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .header { text-align: center; padding: 35px 0 20px 0; border-bottom: 1px solid #1a1a1a; margin-bottom: 25px; }
+        .brand-title { 
+            font-family: 'Playfair Display', serif; 
+            font-size: 2.5rem; 
+            font-weight: 400; 
+            letter-spacing: 6px; 
+            color: #f8f8f8; 
+            text-transform: uppercase;
+        }
+        .brand-subtitle { 
+            color: #888888; 
+            font-size: 0.7rem; 
+            letter-spacing: 2px; 
+            text-transform: uppercase; 
+            margin-top: 8px; 
+        }
+
+        .card { 
+            background-color: #121212; 
+            border: 1px solid #222222; 
+            margin-bottom: 30px; 
+            overflow: hidden;
+        }
+        .card-img-wrap { 
+            width: 100%; 
+            height: 480px; 
+            background-color: #050505; 
+            position: relative;
+        }
+        .card-img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            display: block; 
+        }
+        .card-body { padding: 22px; }
+        .card-title { 
+            font-family: 'Playfair Display', serif; 
+            font-size: 1.3rem; 
+            font-weight: 400; 
+            color: #f8f8f8; 
+            letter-spacing: 1px;
+        }
+        .card-price { 
+            font-size: 1.1rem; 
+            font-weight: 400; 
+            color: #d4af37; 
+            margin: 8px 0 14px 0; 
+            letter-spacing: 1px;
+        }
+        .card-hook { 
+            font-size: 0.82rem; 
+            color: #aaaaaa; 
+            line-height: 1.6; 
+            font-style: italic; 
+            margin-bottom: 20px; 
+            border-left: 1px solid #d4af37;
+            padding-left: 12px;
+        }
+        
+        .btn-group { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .btn { 
+            display: block; 
+            text-align: center; 
+            text-decoration: none; 
+            padding: 14px 5px; 
+            font-size: 0.72rem; 
+            letter-spacing: 2px; 
+            text-transform: uppercase; 
+            cursor: pointer; 
+            transition: all 0.3s ease;
+            background: transparent;
+        }
+        .btn-reserve { 
+            color: #f8f8f8; 
+            border: 1px solid #333333; 
+        }
+        .btn-buy { 
+            color: #0a0a0a; 
+            background-color: #f8f8f8; 
+            border: 1px solid #f8f8f8; 
+            font-weight: 600;
+        }
+
+        .bot-launcher { 
+            position: fixed; 
+            bottom: 24px; 
+            right: 20px; 
+            background-color: #121212; 
+            color: #d4af37; 
+            border: 1px solid #d4af37;
+            padding: 12px 20px; 
+            font-size: 0.7rem; 
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            cursor: pointer; 
+            z-index: 100; 
+        }
+        .bot-modal { 
+            display: none; 
+            position: fixed; 
+            bottom: 80px; 
+            right: 20px; 
+            width: 310px; 
+            background-color: #121212; 
+            border: 1px solid #222222; 
+            padding: 20px; 
+            z-index: 101; 
+        }
+        .bot-title { 
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem; 
+            color: #f8f8f8; 
+            margin-bottom: 14px; 
+            border-bottom: 1px solid #222222; 
+            padding-bottom: 8px; 
+        }
+        .bot-option { 
+            display: block; 
+            width: 100%; 
+            text-align: left; 
+            background-color: #0a0a0a; 
+            color: #888888; 
+            border: 1px solid #222222; 
+            padding: 10px 12px; 
+            margin-bottom: 8px; 
+            font-size: 0.75rem; 
+            cursor: pointer; 
+        }
+        .bot-answer { 
+            background-color: #181818; 
+            color: #cccccc; 
+            padding: 12px; 
+            font-size: 0.78rem; 
+            line-height: 1.5;
+            margin-top: 10px; 
+            display: none; 
+            border-left: 2px solid #d4af37;
+        }
+    </style>
+</head>
+<body>
+    <div class="vip-banner" id="vipBanner">Atención Exclusiva | Entrega Prioritaria en tu Ubicación</div>
+
+    <div class="container">
+        <div class="header">
+            <h1 class="brand-title">NILUĖ</h1>
+            <p class="brand-subtitle">Feminine Essence | Luxury Sleepwear</p>
+        </div>
+
+        <div id="catalogContainer"></div>
+    </div>
+
+    <button class="bot-launcher" onclick="toggleBot()"> Asistencia</button>
+    <div class="bot-modal" id="botModal">
+        <h3 class="bot-title">Atención NILUĖ</h3>
+        <button class="bot-option" onclick="responderBot('Envíos directos a todo Medellín y despachos asegurados a nivel nacional.')">📦 Cobertura de Envíos</button>
+        <button class="bot-option" onclick="responderBot('Transferencia directa por Nequi al número 314 573 9964. Confirmas comprobante vía WhatsApp.')">💳 Pago y Transferencia</button>
+        <button class="bot-option" onclick="responderBot('Manejamos hormas diseñadas para brindar comodidad y ajuste fluido.')">📐 Tallas y Horma</button>
+        <button class="bot-option" onclick="irAsesor()">📲 Atención Personalizada</button>
+        <div class="bot-answer" id="botAnswer"></div>
+    </div>
+
+    <script>
+const wspNikol = "573222258845";
+
+// ÁLBUM DE 13 PRENDAS EXTRAÍDAS DEL CATÁLOGOS PDF REAL
+const productos = [
+  {
+    id: 1,
+    nombre: "Pijama Corta Negra con moños rosados",
+    precio: 52000,
+    img: "/images/foto-1.jpg",
+    hook: "Elegancia y comodidad en negro. Detalles en moños rosados para un toque femenino irresistible."
+  },
+  {
+    id: 2,
+    nombre: "Pijama Corta Negra con botones azules",
+    precio: 52000,
+    img: "/images/foto-2.jpg",
+    hook: "Sofisticación en cada detalle. Botones azules sobre negro absoluto para las noches especiales."
+  },
+  {
+    id: 3,
+    nombre: "Pijama Corta Blanca con ribete rosado",
+    precio: 52000,
+    img: "/images/foto-3.jpg",
+    hook: "Pureza y delicadeza. El blanco con ribetes rosados crea una composición romántica perfecta."
+  },
+  {
+    id: 4,
+    nombre: "Pijama Corta Negra con encaje",
+    precio: 52000,
+    img: "/images/foto-4.jpg",
+    hook: "Feminine essence. Silueta ligera en negro absoluto y textura suave al tacto."
+  },
+  {
+    id: 5,
+    nombre: "Pijama Larga Negra con moños verdes",
+    precio: 62000,
+    img: "/images/foto-5.jpg",
+    hook: "Exclusividad en cada detalle. Caída suave de alta costura para un descanso refinado."
+  },
+  {
+    id: 6,
+    nombre: "Pijama Corta Blanca con encaje",
+    precio: 52000,
+    img: "/images/foto-6.jpg",
+    hook: "Simplicidad elegante. Blanco puro con encaje delicado para las noches serenas."
+  },
+  {
+    id: 7,
+    nombre: "Pijama Corta Blanca con tiras y encaje",
+    precio: 52000,
+    img: "/images/foto-7.jpg",
+    hook: "Suavidad en cada hilo. Diseño minimalista con detalles que marcan la diferencia."
+  },
+  {
+    id: 8,
+    nombre: "Pijama Corta Amarilla con encaje",
+    precio: 52000,
+    img: "/images/foto-8.jpg",
+    hook: "Luz y calidez. El amarillo suave abraza la piel con comodidad total y textura encaje."
+  },
+  {
+    id: 9,
+    nombre: "Pijama Larga Blanca con botones y moño verde",
+    precio: 62000,
+    img: "/images/foto-9.jpg",
+    hook: "Lujo envuelto en blanco. Talle único, hecho en Colombia con las mejores telas."
+  },
+  {
+    id: 10,
+    nombre: "Pijama Larga Blanca con encaje",
+    precio: 62000,
+    img: "/images/foto-10.jpg",
+    hook: "La suavidad en persona. Pijama larga que abraza tu descanso con elegancia absoluta."
+  },
+  {
+    id: 11,
+    nombre: "Pijama Larga Negra con botones blancos",
+    precio: 62000,
+    img: "/images/foto-11.jpg",
+    hook: "Contraste perfecto. Negro profundo con botones blancos que cierran la noche con estilo."
+  },
+  {
+    id: 12,
+    nombre: "Pijama Larga Clara con tiras",
+    precio: 62000,
+    img: "/images/foto-12.jpg",
+    hook: "Tonalidad cálida y fresca. Larga, cómoda y lista para tus descansos más especiales."
+  },
+  {
+    id: 13,
+    nombre: "Pijama Larga Clara con encaje y moños rosados",
+    precio: 62000,
+    img: "/images/foto-13.jpg",
+    hook: "Suavidad en cada detalle. Encaje delicado y moños rosados para las noches soñadas."
+  }
+];
+
+// RESTO DEL CÓDIGO (gallery, functions, etc.)
+// [Aquí va el resto de tu código HTML/CSS/JS original]
+</script>
+
+        const container = document.getElementById('catalogContainer');
+        productos.forEach(p => {
+            container.innerHTML += `
+                <div class="card">
+                    <div class="card-img-wrap">
+                        <img class="card-img" src="${p.img}" alt="${p.nombre}">
+                    </div>
+                    <div class="card-body">
+                        <h2 class="card-title">${p.nombre}</h2>
+                        <p class="card-price">$ ${p.precio.toLocaleString('es-CO')} COP</p>
+                        <p class="card-hook">"${p.hook}"</p>
+                        <div class="btn-group">
+                            <button class="btn btn-reserve" onclick="accionWsp('RESERVA', '${p.nombre}', ${p.precio})">📌 Reservar</button>
+                            <button class="btn btn-buy" onclick="accionWsp('COMPRA', '${p.nombre}', ${p.precio})">🛍️ Comprar</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const refOrigen = urlParams.get('ref') || "";
+
+        if (refOrigen !== "") {
+            document.getElementById('vipBanner').style.display = 'block';
+        }
+
+        function accionWsp(tipo, producto, precio) {
+            let origenTexto = refOrigen !== "" ? ` [Origen QR: ${refOrigen.toUpperCase()}]` : "";
+            let msg = tipo === 'RESERVA' 
+                ? `Hola NILUĖ, deseo RESERVAR la *${producto}* ($${precio.toLocaleString('es-CO')})${origenTexto}. ¿Me confirmas disponibilidad?`
+                : `Hola NILUĖ, deseo COMPRAR la *${producto}* ($${precio.toLocaleString('es-CO')})${origenTexto}. Por favor compárteme datos de Nequi.`;
+            window.open(`https://wa.me/${wspNikol}?text=${encodeURIComponent(msg)}`, '_blank');
+        }
+
+        function toggleBot() {
+            const modal = document.getElementById('botModal');
+            modal.style.display = modal.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function responderBot(texto) {
+            const ans = document.getElementById('botAnswer');
+            ans.style.display = 'block';
+            ans.innerText = texto;
+        }
+
+        function irAsesor() {
+            let origenTexto = refOrigen !== "" ? ` desde el origen ${refOrigen.toUpperCase()}` : "";
+            window.open(`https://wa.me/${wspNikol}?text=${encodeURIComponent('Hola NILUĖ, requiero atención personalizada' + origenTexto)}`, '_blank');
+        }
+    </script>
+</body>
+</html>
